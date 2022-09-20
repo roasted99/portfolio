@@ -73,8 +73,9 @@ const ContactForm = () => {
       onChange={handleChange}
       name="message"
       value={mailerState.message} />
-
-      <button type="submit">Send Message</button>
+      
+      <button type="submit" className="btn"><span className="btntext">Send</span></button>
+      
     </form>
   );
 };

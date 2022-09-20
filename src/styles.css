@@ -276,7 +276,7 @@
   position: absolute;
   top: 210px;
   width: 0;
-  right: 200px;
+  margin-left: 120px;
   animation: typing 3s steps(6, end) forwards;
   overflow: hidden;
   border-right: 3px solid var(--color);
@@ -289,7 +289,7 @@
   position: absolute;
   top: 350px;
   width: 0;
-  right: 200px;
+  margin-left: 110px;
   animation: typing 3s steps(7, end) forwards;
   overflow: hidden;
   border-right: 3px solid var(--color);
@@ -315,6 +315,7 @@
 
 .glitchy-line.title {
   left: 45%;
+  margin-top: 2rem;
 }
 
 .projectList {
@@ -326,9 +327,43 @@
 }
 
 .project {
-  background-color: yellow;
+  /* background-color: yellow; */
   max-width: 20%;
   position: relative;
+  margin: 20px;
+}
+
+.project::before, .project::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  border: 2px solid --glitch-after;
+  transition: .3s ease;
+  background: linear-gradient(45deg, var(--gitch-before), var(--glitch-after));
+  opacity: 1;
+}
+
+.project::before {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAU0lEQVQoU43QMRYAEQwE0ExHyf3vqNxybF6wRIpNZ3whIL74UJDh4zNQpFWTSMOx9y0m0m6FdmDDBnc073QYIQqwweDxa5jR+Zru+gUNCvkPvrgDcCIgJ6cWP4UAAAAASUVORK5CYII=) repeat;
+  top: -15px;
+  left: -15px;
+}
+
+.project::after {
+  bottom: -15px;
+  right: -15px;
+}
+
+.project:hover::before {
+  top: 15px;
+  left: 15px;
+}
+
+.project:hover::after {
+  bottom: 15px;
+  right: 15px;
 }
 
 .projectimg {
@@ -337,37 +372,9 @@
   display: block;
 }
 
-.projectimg::before, .projectimg::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transition: .3s ease;
+.glitchy-line.title.tech {
+  left: 42%;
 }
-
-.projectimg::before {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAU0lEQVQoU43QMRYAEQwE0ExHyf3vqNxybF6wRIpNZ3whIL74UJDh4zNQpFWTSMOx9y0m0m6FdmDDBnc073QYIQqwweDxa5jR+Zru+gUNCvkPvrgDcCIgJ6cWP4UAAAAASUVORK5CYII=) repeat;
-  bottom: 2rem;
-  right: 2rem;
-}
-
-.projectimg::after {
-  background: #00fff7;
-  top: 2rem;
-  left: 2rem;
-}
-
-.projectimg:hover::before {
-  bottom: 4rem;
-  right: 6rem;
-}
-
-.projectimg:hover::after {
-  top: 4rem;
-  left: 6rem;
-}
-
 
 .technologies {
   margin-top: 2rem;
@@ -416,19 +423,80 @@
   /* object-fit: cover; */
 }
 
+
 .marquee img:nth-child(-n+5) {
   max-width: clamp(10rem, 1rem + 28vmin, 20rem);
   aspect-ratio: 1;
 }
 
-.section.contact {
- justify-content: space-around;
- flex-wrap: wrap;
+.contact {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40vh;
+}
+
+.contactinfo {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  color: #281130;
+  font-size: 1.3rem;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.link::before, .link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.link::before {
+  background-color: var(--gitch-before);
+  z-index: -1;
+}
+
+.link::after {
+  background-color: var(--glitch-after);
+  z-index: -2;
+}
+
+.link.icon:hover {
+  animation: glitchy 0.3s ease 1;
+}
+
+.link:hover::before {
+  animation: glitchy 0.3s ease 0.3s infinite;
+}
+
+.link:hover::after {
+  animation: glitchy 0.3s ease infinite reverse;
+}
+
+.icon {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  background-color: var(--color);
+  padding: 15px 25px;
 }
 
 form {
-  backdrop-filter: blur(15px);
-  height: 50%;
+  
+  backdrop-filter: blur(20px);
+  height: 100%;
   width: 50%;
   padding: 1.5rem;
 }
@@ -448,11 +516,49 @@ input, textarea {
 textarea {
   height: 50%;
 }
-button {
-  padding: .5rem;
+
+.btn {
   cursor: pointer;
-  background-color: transparent;
-  font-family: 'Roboto';
-  color: var(--color);
+  z-index: 3;
+  position: relative;
+  width: 100%;
+  font-size: 1.1rem;
 }
 
+.btn::before, .btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.btn::before {
+  background-color: var(--gitch-before);
+  z-index: -1;
+}
+
+.btn::after {
+  background-color: var(--glitch-after);
+  z-index: -2;
+}
+
+.btn:hover{
+  animation: glitchy 0.3s ease 1;
+}
+
+.btn:hover::before {
+  animation: glitchy 0.3s ease 0.3s infinite;
+}
+
+.btn:hover::after {
+  animation: glitchy 0.3s ease infinite reverse;
+}
+
+.btntext {
+  display: block;
+  height: 100%;
+  background-color: var(--color);
+  padding: 5px 0;
+}
