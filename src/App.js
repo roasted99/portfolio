@@ -1,7 +1,8 @@
 import ContactForm from './components/ContactForm';
-
+import Project from './components/Project';
 
 import retrogrid from './img/retrowave-grid.gif';
+import snake from './img/snake.gif';
 import htmllogo from './img/html.png';
 import csslogo from './img/css.png';
 import javascriptlogo from './img/javascript.png';
@@ -20,12 +21,15 @@ import { FaLinkedin, FaGithub, FaTwitter} from 'react-icons/fa'
 
 const App = () => {
 
+  const ref = useRef();
+
   const neonlinebg = {
     backgroundImage:`url(${retrogrid})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '100vh'
   }
+
   return (
     <>  
     <div className='background'></div>
@@ -33,17 +37,18 @@ const App = () => {
 
       <ParallaxLayer
         offset={0}
-        speed={1}
-        factor={1}
+        speed={0.5}
+        factor={2.3}
         style={{
-          display: 'grid',
-          gridTemplateColumns: '2fr 1fr',
+          backgroundImage: `url(${snake})`,
+          backgroundSize: 'cover',
         }}>
-        <div className='description'>
+        <div className="intro">
+          <div className='description'>
           <div><a href="/" data-content="KHAM LAUNG" className='glitchy'>KHAM LAUNG</a></div>
           <div><a href="/" className='glitchy-line'>Full stack developer</a></div>
           
-        </div>
+          </div>
         
         <div className='tvs'>
           <img src={tvstack} alt="TV Stack" className='tvstack'/>
@@ -51,13 +56,21 @@ const App = () => {
             <div className="c1"><div className="type1">HELLO!</div></div>
             <div className="c2"><div className="type2">WELCOME</div></div>
             
-          </div>
+           </div>
           <div className="avatar"></div>
+          </div>
         </div>
         
       </ParallaxLayer>
 
-      <ParallaxLayer offset={1}>
+      <ParallaxLayer 
+      offset={1}
+      // factor={2.3}
+      // style={{
+      //   backgroundImage: `url(${snake})`,
+      //   backgroundSize: 'cover',
+      // }}
+      >
       <div className="about">
           <p>I am a self-taught developer, based out of Yangon, Myanmar, looking to make the first step in tech industry.
             I used to work in interior decoration but now I work with code.</p> 
@@ -67,30 +80,39 @@ const App = () => {
         
       </ParallaxLayer>
 
-      <ParallaxLayer offset={1.3}>
+      <ParallaxLayer 
+      offset={1.3}
+      >
         <div><a href="/" className='glitchy-line title'>PROJECTS</a></div>
 
         <div className="projectList">
-          <div className="project">
-            <img src={reactlogo} alt="" className='projectimg'/>
-            <div>
-              <h3>Library Management App</h3>
-              <h4>Technologies</h4>
-              <p>Ruby On Rails</p>
-            </div>
-          </div>
+         <Project 
+         img={reactlogo}
+         alt="html logo"
+         title="Library Management App"
+         technologies="Ruby on Rails"
+         />
 
-          <div className="project">
-            <img src={reactlogo} alt="" className='projectimg'/>
-          </div>
+        <Project 
+         img={reactlogo}
+         alt="html logo"
+         title="Library Management App"
+         technologies="Ruby on Rails"
+         />
 
-          <div className="project">
-            <img src={reactlogo} alt="" className='projectimg'/>
-          </div>
+        <Project 
+         img={reactlogo}
+         alt="html logo"
+         title="Library Management App"
+         technologies="Ruby on Rails"
+         />
 
-          <div className="project">
-            <img src={reactlogo} alt="" className='projectimg'/>
-          </div>
+        <Project 
+         img={reactlogo}
+         alt="html logo"
+         title="Library Management App"
+         technologies="Ruby on Rails"
+         />
         </div>
 
         <div><a href="/" className='glitchy-line title tech'>TECHNOLOGIES</a></div>
@@ -135,20 +157,26 @@ const App = () => {
       <a href="/" className='glitchy-line title'>CONTACT</a>
         <div className='contact'>
           <div className="contactinfo">
-            <h4>Get in touch!</h4>
+            
+            <div className="neonsign">
+              <span>Get&nbsp;</span>
+              <span className='flicker'>i</span><span>n&nbsp;</span>
+              <span className='flicker'>t</span><span>ouch</span>
+              <span className='fastFlicker'>!</span>
+            </div>
             <div>
-              <a href="https://www.linkedin.com/in/kham-laung/" className='link'>
+              <a href="https://www.linkedin.com/in/kham-laung/" className='link' target="_blank">
                 
               <span className='icon'><FaLinkedin /> LinkedIn</span></a>
               </div>
              <div>
-            <a href="https://github.com/roasted99" className='link'>
+            <a href="https://github.com/roasted99" className='link' target="_blank">
               
               <span className="icon"><FaGithub /> GitHub</span>
             </a>
             </div> 
             <div>
-            <a href="https://twitter.com/KhamLao11" className='link'>
+            <a href="https://twitter.com/KhamLao11" className='link' target="_blank">
             
               <span className="icon"><FaTwitter /> Twitter</span>
               </a>

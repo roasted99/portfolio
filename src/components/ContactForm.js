@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaRegPaperPlane } from "react-icons/fa"
 
 const ContactForm = () => {
   const [mailerState, setMailerState] = useState({
@@ -74,7 +75,7 @@ const ContactForm = () => {
       name="message"
       value={mailerState.message} />
       
-      <button type="submit" className="btn"><span className="btntext">Send</span></button>
+      <button type="submit" className="btn"><span className="btntext">< FaRegPaperPlane />  Send</span></button>
       
     </form>
   );

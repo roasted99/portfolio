@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url(//fonts.googleapis.com/css?family=Vibur);
 
 * {
   box-sizing: border-box;
@@ -27,6 +28,13 @@
   right: 0;
   left: 0;
   z-index: -20;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  height: 100vh;
 }
 
 .description {
@@ -331,6 +339,7 @@
   max-width: 20%;
   position: relative;
   margin: 20px;
+  
 }
 
 .project::before, .project::after {
@@ -341,7 +350,8 @@
   z-index: -1;
   border: 2px solid --glitch-after;
   transition: .3s ease;
-  background: linear-gradient(45deg, var(--gitch-before), var(--glitch-after));
+  background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%, transparent 40%);
+  
   opacity: 1;
 }
 
@@ -366,16 +376,66 @@
   right: 15px;
 }
 
+.project:hover::after + .hide {
+  display: block;
+  color: var(--color);
+}
+
 .projectimg {
   max-width: 15rem;
   height: auto;
   display: block;
+  cursor: pointer;
 }
 
 .glitchy-line.title.tech {
   left: 42%;
 }
 
+/* Modal */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  width: 60%;
+  height: auto;
+  background: rgba(28,7,32,255);
+  color: --color;
+  padding: 1rem;
+  border: 7px solid white;
+}
+
+.windowClose {
+  float: right;
+  cursor: pointer;
+}
+
+.projectinfo {
+  padding: 1rem;
+}
+
+.icons {
+  display: flex ;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+/* Technology */
 .technologies {
   margin-top: 2rem;
   display: block;
@@ -433,7 +493,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 40vh;
+  height: 50vh;
+  margin-top: 3.5rem;
 }
 
 .contactinfo {
@@ -441,7 +502,194 @@
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
+
+/* Neon Sign */
+.neonsign {
+  text-align: center;
+  user-select: none;
+}
+
+.neonsign span {
+  font-size: 5rem;
+  font-family: 'Vibur';
+  color: #FC466B;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+  0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flick 3s infinite;
+}
+
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fastFlicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes shine {
+  0% {
+    color: #FC466B;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffd5ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+}
+
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+  28%,
+  33% {
+    color: #ff65bd;
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: #ff2483;
+    text-shadow: none;
+  }
+}
+
+@keyframes flick {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 
 .link {
   position: relative;
@@ -521,7 +769,7 @@ textarea {
   cursor: pointer;
   z-index: 3;
   position: relative;
-  width: 100%;
+  padding: 0;
   font-size: 1.1rem;
 }
 
@@ -560,5 +808,5 @@ textarea {
   display: block;
   height: 100%;
   background-color: var(--color);
-  padding: 5px 0;
+  padding: .8rem;
 }
