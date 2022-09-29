@@ -1,25 +1,25 @@
-import ContactForm from './components/ContactForm';
 import Project from './components/Project';
+import Marquee from './components/Marquee';
+import Contact from './components/Contact';
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
 
 import retrogrid from './img/retrowave-grid.gif';
 import snake from './img/snake.gif';
-import htmllogo from './img/html.png';
-import csslogo from './img/css.png';
-import javascriptlogo from './img/javascript.png';
-import postgres from './img/postgresql.png';
-import expresslogo from './img/express.png';
-import mongodblogo from './img/MongoDB.png';
-import railslogo from './img/rails.png';
-import nodelogo from './img/nodejs.jpg'
 import reactlogo from './img/react.png'; 
 import { useRef } from 'react';
-import tvstack from './img/tvstacknobg.png'
 
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
-import { FaLinkedin, FaGithub, FaTwitter} from 'react-icons/fa'
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import { BrowserRouter } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
+import { FiMenu } from 'react-icons/fi';
+import { IconContext } from 'react-icons';
+import { useState } from 'react';
+
 
 
 const App = () => {
+  const [open, setOpen] = useState(false);
 
   const ref = useRef();
 
@@ -31,45 +31,39 @@ const App = () => {
   }
 
   return (
+    <BrowserRouter>
     <>  
-    <div className='background'></div>
+    <div className="background"></div>
     <Parallax pages={3.3}>
 
       <ParallaxLayer
         offset={0}
         speed={0.5}
         factor={2.3}
+        onClick={() => ref.current.scrollTo(1)}
         style={{
           backgroundImage: `url(${snake})`,
           backgroundSize: 'cover',
         }}>
-        <div className="intro">
-          <div className='description'>
-          <div><a href="/" data-content="KHAM LAUNG" className='glitchy'>KHAM LAUNG</a></div>
-          <div><a href="/" className='glitchy-line'>Full stack developer</a></div>
-          
-          </div>
-        
-        <div className='tvs'>
-          <img src={tvstack} alt="TV Stack" className='tvstack'/>
-          <div className="wrapper">
-            <div className="c1"><div className="type1">HELLO!</div></div>
-            <div className="c2"><div className="type2">WELCOME</div></div>
+          <IconContext.Provider
+          value={{size: '50px'}}>
             
-           </div>
-          <div className="avatar"></div>
-          </div>
-        </div>
-        
+            <div className="navbar">
+             <FiMenu 
+              className='navicon'
+            />
+            <Navbar open={open}/>
+            </div>
+          
+
+           <Hero />
+        </IconContext.Provider>
       </ParallaxLayer>
 
       <ParallaxLayer 
       offset={1}
-      // factor={2.3}
-      // style={{
-      //   backgroundImage: `url(${snake})`,
-      //   backgroundSize: 'cover',
-      // }}
+      id="about"
+      onClick={() => ref.current.scrollTo(1.3)}
       >
       <div className="about">
           <p>I am a self-taught developer, based out of Yangon, Myanmar, looking to make the first step in tech industry.
@@ -81,7 +75,9 @@ const App = () => {
       </ParallaxLayer>
 
       <ParallaxLayer 
-      offset={1.3}
+      offset={1.25}
+      id="project"
+      onClick={() => ref.current.scrollTo(2.3)}
       >
         <div><a href="/" className='glitchy-line title'>PROJECTS</a></div>
 
@@ -116,94 +112,23 @@ const App = () => {
         </div>
 
         <div><a href="/" className='glitchy-line title tech'>TECHNOLOGIES</a></div>
-
-        <div className="technologies">
-          <div className="marquee">
-            <div className='marqueeGroup'>
-
-            <img src={htmllogo} alt="html logo" />
-            <img src={csslogo} alt="css logo" />
-            <img src={javascriptlogo} alt="javascript logo" />
-            <img src={nodelogo} alt="nodejs logo" />
-            <img src={postgres} alt="progresql logo" />
-            <img src={reactlogo} alt="react logo" />
-            <img src={expresslogo} alt="express logo" />
-            <img src={mongodblogo} alt="mongodb logo" />
-            <img src={railslogo} alt="rails logo" />
-
-          </div>
-
-          <div aria-hidden="true" className='marqueeGroup'>
-            
-            <img src={htmllogo} alt="html logo" />
-            <img src={csslogo} alt="css logo" />
-            <img src={javascriptlogo} alt="javascript logo" />
-            <img src={reactlogo} alt="nodejs logo" />
-            <img src={railslogo} alt="rails logo" />
-            <img src={reactlogo} alt="react logo" />
-            <img src={expresslogo} alt="express logo" />
-            <img src={mongodblogo} alt="mongodb logo" />
-            <img src={reactlogo} alt="progresql logo" />
-
-          </div>
-          </div>
-        </div>
-
-
+        <Marquee />
+      
       </ParallaxLayer>
       <ParallaxLayer 
       offset={2.3}
+      id="contact"
+      onClick={() => ref.current.scrollTo}
       style={neonlinebg}>
       <a href="/" className='glitchy-line title'>CONTACT</a>
-        <div className='contact'>
-          <div className="contactinfo">
-            
-            <div className="neonsign">
-              <span>Get&nbsp;</span>
-              <span className='flicker'>i</span><span>n&nbsp;</span>
-              <span className='flicker'>t</span><span>ouch</span>
-              <span className='fastFlicker'>!</span>
-            </div>
-            <div>
-              <a href="https://www.linkedin.com/in/kham-laung/" className='link' target="_blank">
-                
-              <span className='icon'><FaLinkedin /> LinkedIn</span></a>
-              </div>
-             <div>
-            <a href="https://github.com/roasted99" className='link' target="_blank">
-              
-              <span className="icon"><FaGithub /> GitHub</span>
-            </a>
-            </div> 
-            <div>
-            <a href="https://twitter.com/KhamLao11" className='link' target="_blank">
-            
-              <span className="icon"><FaTwitter /> Twitter</span>
-              </a>
-            </div>
-          </div>
-        <ContactForm />
-        </div>
+       <Contact />
 
         
       </ParallaxLayer>
     </Parallax>
-  {/*
-
-         {/* 
-       <section className='section contact'>
-        
-          <div className="contactinfo">
-            <h1>GET IN TOUCH</h1>
-          </div>
-          <ContactForm />
-        
-       </section>     
-        
-    </div>  */}
-            
  
       </>
+      </BrowserRouter>
   );
 }
 
