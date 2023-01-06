@@ -3,9 +3,11 @@ import Marquee from './components/Marquee';
 import Contact from './components/Contact';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
+import Svg from './components/Svg';
 
 import retrogrid from './img/retrowave-grid.gif';
 import snake from './img/snake.gif';
+import computer from './img/computer.gif';
 import reactlogo from './img/react.png'; 
 import { useRef } from 'react';
 
@@ -33,7 +35,9 @@ const App = () => {
   return (
     <BrowserRouter>
     <>  
-    <div className="background"></div>
+    <div className="background">
+      <Svg />
+    </div>
     <Parallax pages={3.3}>
 
       <ParallaxLayer
@@ -42,12 +46,12 @@ const App = () => {
         factor={2.3}
         onClick={() => ref.current.scrollTo(1)}
         style={{
-          backgroundImage: `url(${snake})`,
-          backgroundSize: 'cover',
+          // backgroundImage: `url(${snake})`,
+          // backgroundSize: 'cover',
         }}>
           <IconContext.Provider
           value={{size: '50px'}}>
-            
+
             <div className="navbar">
              <FiMenu 
               className='navicon'
@@ -64,6 +68,10 @@ const App = () => {
       offset={1}
       id="about"
       onClick={() => ref.current.scrollTo(1.3)}
+      style={{
+        backgroundImage: `url(${computer})`,
+        backgroundSize: 'contain'
+      }}
       >
       <div className="about">
           <p>I am a self-taught developer, based out of Yangon, Myanmar, looking to make the first step in tech industry.
