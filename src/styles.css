@@ -51,6 +51,8 @@ svg {
   color: white;
   list-style:none;
   z-index:2;
+  left: 20px;
+  top: 20px;
 }
 
 .navicon {
@@ -516,11 +518,16 @@ svg {
   padding: 1rem;
 }
 
+.project-img {
+  width: 50%;
+}
+
 .icons {
   display: flex ;
   justify-content: space-around;
   gap: 1rem;
   margin-bottom: 1rem;
+  margin-top: 1rem;
   cursor: pointer;
 }
 
@@ -848,13 +855,14 @@ input, textarea {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, .5);
   color: #fff;
   border: 1px solid #fff;
 }
 
 textarea {
   height: 50%;
+  font-family: 'Poppin';
 }
 
 .btn {

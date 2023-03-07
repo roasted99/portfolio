@@ -10,13 +10,13 @@ const Modal = props => {
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="modal-body">
           <div className="windowClose" onClick={props.onClose}><FaRegWindowClose /></div>
-          <img src={props.img} alt={props.alt} />
+          <img src={props.img} alt={props.alt} className="project-img"/>
           <div className="projectinfo">
              <h3>{props.title}</h3>
             <h4>Description</h4>
             <p>{props.description}</p>
-            <h4>Technologies used</h4>
-            <p>{props.technologies}</p>
+            <h4>Technologies used : {props.technology}</h4>
+            <p></p>
             <div className="icons">
               <a href={props.code} className='link' target="_blank">
               <span className="icon"><FaCode /> Source code</span>
