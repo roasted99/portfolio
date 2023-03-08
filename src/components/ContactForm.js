@@ -18,7 +18,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({ mailerState });
-    const response = await fetch("http://localhost:8080/send", {
+     await fetch("http://localhost:8081/send", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -32,13 +32,13 @@ const ContactForm = () => {
       
       if (resData.status === "success") {
         return (
-          <div className="success">
+          <div className="message">
             <p>Message has been sent!</p>
           </div>
         )
       } else if (resData === "fail") {
         return (
-          <div className="fail">
+          <div className="message">
             <p>Message failed to send.</p>
           </div>
         )
@@ -60,22 +60,27 @@ const ContactForm = () => {
       placeholder="Name"
       onChange={handleChange}
       name="name"
-      value={mailerState.name} />
+      value={mailerState.name}
+      required={true}/>
 
       <input 
       type="text"
       placeholder="Email"
       onChange={handleChange}
       name="email"
-      value={mailerState.email} />
+      value={mailerState.email}
+      required={true} />
 
       <textarea 
       placeholder="Message"
       onChange={handleChange}
       name="message"
-      value={mailerState.message} />
+      value={mailerState.message}
+      required={true} />
       
       <button type="submit" className="btn"><span className="btntext">< FaRegPaperPlane />  Send</span></button>
+
+      
       
     </form>
   );

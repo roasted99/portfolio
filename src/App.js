@@ -43,7 +43,7 @@ const App = () => {
     <div className="background">
       <Svg />
     </div>
-    <Parallax pages={3.3}>
+    <Parallax pages={3.5}>
 
       <ParallaxLayer
         offset={0}
@@ -88,9 +88,9 @@ const App = () => {
       </ParallaxLayer>
 
       <ParallaxLayer 
-      offset={1.6}
+      offset={1.5}
       id="project"
-      onClick={() => ref.current.scrollTo(2.3)}
+      onClick={() => ref.current.scrollTo(1.5)}
       >
         <div><a href="/" className='glitchy-line title'>PROJECTS</a></div>
 
@@ -145,7 +145,7 @@ const App = () => {
       offset={2.5}
       speed={.1}
       id="contact"
-      onClick={() => ref.current.scrollTo}
+      onClick={() => ref.current.scrollTo(2.5)}
       >
       <a href="/" className='glitchy-line title'>CONTACT</a>
        <Contact />
