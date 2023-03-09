@@ -1,6 +1,8 @@
 const express = require("express");
+const serverless = require('serverless-http');
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+
 
 const app = express();
 require("dotenv").config();
@@ -8,15 +10,17 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 
+
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     type: "OAuth2",
     user: process.env.EMAIL,
-    password: process.env.WORD,
     clientId: process.env.OAUTH_CLIENTID,
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
     refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+    access_type: 'offline',
+    prompt: 'consent'
   }
 });
 
@@ -46,3 +50,6 @@ app.post("/send", function(req, res) {
 app.listen(process.env.PORT, ()=> {
   console.log(`Server is running on port: ${process.env.PORT}`);
 });
+
+// app.use('/.netlify/functions/api', router);
+module.exports.handler = serverless(app);

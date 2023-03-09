@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createElement } from "react";
 import { FaRegPaperPlane } from "react-icons/fa"
 
 const ContactForm = () => {
@@ -7,6 +7,7 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [statusMessage, setStatusMessage] = useState(null)
 
   function handleChange(e) {
     setMailerState((prevState) => ({
@@ -18,39 +19,47 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({ mailerState });
-     await fetch("http://localhost:8081/send", {
+    const response = await fetch("http://localhost:8081/send", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({ mailerState })
     })
-    .then((res) => res.json())
-    .then(async (data) => {
-      const resData = await data;
-      console.log(resData);
-      
-      if (resData.status === "success") {
-        return (
-          <div className="message">
-            <p>Message has been sent!</p>
-          </div>
-        )
-      } else if (resData === "fail") {
-        return (
-          <div className="message">
-            <p>Message failed to send.</p>
-          </div>
-        )
-      }
-    })
-    .then(() => {
-      setMailerState({
-        email: "",
-        name: "",
-        message: ""
-      });
+    const data = await response.json()
+
+    if (!response.ok) {
+      setStatusMessage('Failed to send message')
+    }
+
+   if (response.ok) {
+    setStatusMessage('Message has been sent!')
+    setMailerState({
+      email: "",
+      name: "",
+      message: ""
     });
+   } 
+
+    
+    // .then((res) => res.json())
+    // .then(async (data) => {
+    //   const resData = await data;
+    //   console.log(resData);
+
+    //   if (resData.status === "success") {
+    //     setMessage('Message has been sent!')
+    //   } else if (resData.status === "fail") {
+    //     setMessage('Failed to send message')
+    //   }
+    // })
+    // .then(() => {
+    //   setMailerState({
+    //     email: "",
+    //     name: "",
+    //     message: ""
+    //   });
+    // });
   }
   
   return (
@@ -79,7 +88,7 @@ const ContactForm = () => {
       required={true} />
       
       <button type="submit" className="btn"><span className="btntext">< FaRegPaperPlane />  Send</span></button>
-
+      {statusMessage && <p>{statusMessage}</p>}
       
       
     </form>
