@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.09aebb8a.css",
+    "main.js": "/static/js/main.15bd86f1.js",
+    "static/media/retrowave-grid.gif": "/static/media/retrowave-grid.7455bcb569241a517850.gif",
+    "static/media/react-shopping-cart.png": "/static/media/react-shopping-cart.97a39301cd3e3f07a103.png",
+    "static/media/googlemapclone.png": "/static/media/googlemapclone.4b87d1fc2f900f67f87f.png",
+    "static/media/snake.gif": "/static/media/snake.58eeaf651965d6584578.gif",
+    "static/media/computer.gif": "/static/media/computer.254d6002b05ba4fd11b5.gif",
+    "static/media/tvstacknobg.png": "/static/media/tvstacknobg.aae64ec660a7eaf065ff.png",
+    "static/media/Inventoryapp.png": "/static/media/Inventoryapp.dfdcbb95627a07b64ecc.png",
+    "static/media/newavatar.jpg": "/static/media/newavatar.2d65fd150c3a13311627.jpg",
+    "index.html": "/index.html",
+    "main.09aebb8a.css.map": "/static/css/main.09aebb8a.css.map",
+    "main.15bd86f1.js.map": "/static/js/main.15bd86f1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.09aebb8a.css",
+    "static/js/main.15bd86f1.js"
+  ]
+}
