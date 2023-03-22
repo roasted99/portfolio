@@ -2,13 +2,19 @@ const express = require("express");
 const serverless = require('serverless-http');
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+const bodyParser = require('body-parser');
 
 
 const app = express();
+const router = express.Router()
 require("dotenv").config();
+
 
 app.use(express.json());
 app.use(cors());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 let transporter = nodemailer.createTransport({
@@ -46,10 +52,17 @@ app.post("/send", function(req, res) {
   });
 });
 
+app.use(express.static('build'));
+
+// // Serve the index.html file for all other requests
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+
 
 app.listen(process.env.PORT, ()=> {
   console.log(`Server is running on port: ${process.env.PORT}`);
 });
 
-// app.use('/.netlify/functions/api', router);
+app.use('/.netlify/functions/api', router);
 module.exports.handler = serverless(app);

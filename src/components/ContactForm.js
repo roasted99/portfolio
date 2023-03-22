@@ -19,7 +19,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({ mailerState });
-    const response = await fetch("http://localhost:8081/send", {
+    const response = await fetch("/send", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
