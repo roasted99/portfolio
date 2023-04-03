@@ -19,7 +19,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({ mailerState });
-    const response = await fetch("http://localhost:8080/send", {
+    const response = await fetch("https://small-shape-7103.fly.dev/send", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -91,7 +91,6 @@ const ContactForm = () => {
       required={true} />
       
       <button type="submit" className="btn"><span className="btntext">< FaRegPaperPlane />  {statusMessage}</span></button>
-      {statusMessage && <p>{statusMessage}</p>}
       
       
     </form>
