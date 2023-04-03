@@ -7,7 +7,7 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
-  const [statusMessage, setStatusMessage] = useState(null)
+  const [statusMessage, setStatusMessage] = useState('Submit')
 
   function handleChange(e) {
     setMailerState((prevState) => ({
@@ -19,20 +19,23 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({ mailerState });
-    const response = await fetch("/send", {
+    const response = await fetch("http://localhost:8080/send", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({ mailerState })
+      
     })
+    setStatusMessage('Sending')
     const data = await response.json()
+    console.log(data)
 
-    if (!response.ok) {
+    if (data.status === 'fail') {
       setStatusMessage('Failed to send message')
     }
 
-   if (response.ok) {
+   if (data.status === 'success') {
     setStatusMessage('Message has been sent!')
     setMailerState({
       email: "",
@@ -87,7 +90,7 @@ const ContactForm = () => {
       value={mailerState.message}
       required={true} />
       
-      <button type="submit" className="btn"><span className="btntext">< FaRegPaperPlane />  Send</span></button>
+      <button type="submit" className="btn"><span className="btntext">< FaRegPaperPlane />  {statusMessage}</span></button>
       {statusMessage && <p>{statusMessage}</p>}
       
       
