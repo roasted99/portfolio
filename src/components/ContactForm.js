@@ -19,7 +19,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({ mailerState });
-    const response = await fetch("https://small-shape-7103.fly.dev/send", {
+    const response = await fetch("https://astounding-muffin-f2059a.netlify.app/.netlify/functions/api/send", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

@@ -43,12 +43,12 @@ const App = () => {
     <div className="background">
       <Svg />
     </div>
-    <Parallax pages={3.5}>
+    <Parallax pages={4.5}>
 
       <ParallaxLayer
         offset={0}
-        speed={0.1}
-        factor={2}
+        speed={0}
+       
         onClick={() => ref.current.scrollTo(1)}
         style={{
           // backgroundImage: `url(${snake})`,
@@ -71,8 +71,10 @@ const App = () => {
 
       <ParallaxLayer 
       offset={1}
+      speed={0.5}
+      factor={.5}
       id="about"
-      onClick={() => ref.current.scrollTo(1.3)}
+      onClick={() => ref.current.scrollTo(1)}
       style={{
         // backgroundImage: `url(${computer})`,
         // backgroundSize: 'contain'
@@ -88,7 +90,7 @@ const App = () => {
       </ParallaxLayer>
 
       <ParallaxLayer 
-      offset={1.5}
+      offset={2}
       id="project"
       onClick={() => ref.current.scrollTo(1.5)}
       >
@@ -142,7 +144,7 @@ const App = () => {
       
       </ParallaxLayer>
       <ParallaxLayer 
-      offset={2.5}
+      offset={3.3}
       speed={.1}
       id="contact"
       onClick={() => ref.current.scrollTo(2.5)}
