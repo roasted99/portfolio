@@ -60,9 +60,10 @@ app.use(express.static('build'));
 // });
 
 
-app.listen(process.env.PORT, ()=> {
-  console.log(`Server is running on port: ${process.env.PORT}`);
-});
+// app.listen(process.env.PORT, ()=> {
+//   console.log(`Server is running on port: ${process.env.PORT}`);
+// });
 
-app.use('/.netlify/functions/api', router);
+app.use(`/.netlify/functions/api`, router);
+module.exports = app;
 module.exports.handler = serverless(app);
