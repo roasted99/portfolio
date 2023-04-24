@@ -34,7 +34,7 @@ transporter.verify((err, success) => {
   err ? console.log(err) : console.log(`=== Server is ready to take message: ${success}`)
 });
 
-app.post("/send", function(req, res) {
+router.post("/send", function(req, res) {
   let mailOptions = {
     from: `${req.body.mailerState.email}`,
     to: process.env.EMAIL,
@@ -44,13 +44,17 @@ app.post("/send", function(req, res) {
   
   transporter.sendMail(mailOptions, function(err, data) {
     if (err) {
-      res.json({ status: "fail"})
+      res.json({ status: "fail", error: `${err}`})
     } else {
       console.log("Email sent sucessfully");
       res.json({ status: "success"});
     }
   });
 });
+
+router.get('/', function(req, res) {
+  res.json({msg: 'this is working'})
+})
 
 app.use(express.static('build'));
 
